@@ -9,6 +9,9 @@ import { Form } from '@unform/web';
 // Store
 import { signInRequest } from '../../../store/modules/auth/actions';
 
+// Services
+import navigateTo from '../../../utils/Services/NavigationServices/navigate';
+
 // Styles
 import {
     Container,
@@ -34,6 +37,10 @@ export default function LoginForm() {
         setLoading(true);
         dispatch(signInRequest(email, password));
         setLoading(false);
+    };
+
+    const handleClick = () => {
+        return navigateTo('/register');
     };
 
     return (
@@ -71,7 +78,9 @@ export default function LoginForm() {
                     <LabelForgotPassword>
                         Esqueci minha senha*
                     </LabelForgotPassword>
-                    <LabelSignup>Quero me cadastrar</LabelSignup>
+                    <LabelSignup onClick={() => handleClick()}>
+                        Quero me cadastrar
+                    </LabelSignup>
                 </UtilsContainer>
             </Form>
         </Container>

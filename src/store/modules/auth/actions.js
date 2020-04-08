@@ -25,3 +25,9 @@ export function signFailure() {
         type: ACTION_TYPES.signFailure,
     };
 }
+
+export function signOut() {
+    return {
+        type: ACTION_TYPES.signOut,
+    };
+}

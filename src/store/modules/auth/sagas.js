@@ -6,7 +6,7 @@ import { signInSuccess } from './actions';
 
 import { makeLogin } from '../../../utils/Services/LoginServices/LoginService';
 
-import history from '../../../utils/Services/NavigationServices/history';
+import navigateTo from '../../../utils/Services/NavigationServices/navigate';
 
 export function* signIn({ payload }) {
     const { email, password } = payload;
@@ -16,8 +16,16 @@ export function* signIn({ payload }) {
     if (!resErr) {
         const { user, token } = res;
         yield put(signInSuccess(token, user));
-        history.push('/');
+        navigateTo('/');
     }
 }
 
-export default all([takeLatest(ACTION_TYPES.signinRequest, signIn)]);
+export function signOut() {
+    console.log('oi');
+    navigateTo('/login');
+}
+
+export default all([
+    takeLatest(ACTION_TYPES.signinRequest, signIn),
+    takeLatest(ACTION_TYPES.signOut, signOut),
+]);

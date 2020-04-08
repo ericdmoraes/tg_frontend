@@ -13,3 +13,8 @@ export default (reducers) => {
 
     return persistedReducer;
 };
+
+export const persistConfig = {
+    key: 'root',
+    storage,
+};

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { FiLogIn } from 'react-icons/fi';
+import { MdAssignment } from 'react-icons/md';
 import UnformInput from '../../../_Components/UnformInput/UnformInput';
 
 export const Container = styled.div`
@@ -25,7 +25,7 @@ export const HeaderContainer = styled.div`
     justify-content: center;
 `;
 
-export const Icon = styled(FiLogIn)`
+export const Icon = styled(MdAssignment)`
     font-size: ${({ px }) => px}px;
     color: white;
     margin-right: 10px;
@@ -98,13 +98,5 @@ export const LabelForgotPassword = styled.p`
     text-decoration: underline;
     text-align: right;
     font-size: 14px;
-    cursor: pointer;
-`;
-
-export const LabelSignup = styled.p`
-    font-weight: 500;
-    width: 40%;
-    color: white;
-    text-decoration: underline;
     cursor: pointer;
 `;

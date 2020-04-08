@@ -4,6 +4,10 @@ import { Redirect, Route } from 'react-router-dom';
 
 import { store } from '../store';
 
+// Layout
+import DefaultLayout from '../_Components/_layout/Default';
+import AuthLayout from '../_Components/_layout/Auth';
+
 export default function RouteWrapper({
     component: Component,
     isPrivate = false,
@@ -19,5 +23,18 @@ export default function RouteWrapper({
         return <Redirect to="/" />;
     }
 
-    return <Route {...rest} component={Component} />;
+    const Layout = signed ? DefaultLayout : AuthLayout;
+
+    return (
+        <Route
+            {...rest}
+            render={(props) => {
+                return (
+                    <Layout>
+                        <Component {...props} />
+                    </Layout>
+                );
+            }}
+        />
+    );
 }
