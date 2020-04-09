@@ -2,7 +2,8 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { IoIosArrowDown } from 'react-icons/io';
+// Components
+import Menu from './Menu/Menu';
 
 // Styles
 import {
@@ -11,33 +12,28 @@ import {
     UserMenu,
     ImgPlaceholder,
     LabelTitle,
+    Label,
 } from './HeaderStyles';
 
 export default function Default() {
     const { name, teacher } = useSelector((state) => state.user.profile);
+
+    const userType = teacher ? 'Professor' : 'Aluno';
+
     return (
         <Container>
             <Title>
-                {teacher ? (
-                    <LabelTitle>Professor</LabelTitle>
-                ) : (
-                    <LabelTitle>Aluno</LabelTitle>
-                )}
+                <LabelTitle>{userType}</LabelTitle>
             </Title>
+
             <UserMenu>
                 {name && (
                     <>
-                        <ImgPlaceholder />
-                        <p style={{ color: 'white' }}>
+                        <ImgPlaceholder src="https://picsum.photos/45/45?random=1" />
+                        <Label>
                             Olá, <b>{name}</b>!
-                        </p>
-                        <IoIosArrowDown
-                            style={{
-                                marginLeft: 10,
-                                color: 'white',
-                                fontSize: 25,
-                            }}
-                        />
+                        </Label>
+                        <Menu />
                     </>
                 )}
             </UserMenu>
