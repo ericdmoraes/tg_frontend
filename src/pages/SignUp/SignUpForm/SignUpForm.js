@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 
-// Form
+// Thir Components
+import Snackbar from '@material-ui/core/Snackbar';
 import { Form } from '@unform/web';
+
+// Components
+import Alert from '../../../_Components/Alert/Alert';
 
 // Styles
 import {
@@ -24,6 +28,7 @@ import { makeRegister } from '../../../utils/Services/SignUpServices/SignUpServi
 
 export default function SignUpForm() {
     const [check, setCheck] = useState(false);
+    const [snack, setSnack] = useState(false);
 
     const handleClick = () => {
         return navigateTo('/login');
@@ -46,6 +51,11 @@ export default function SignUpForm() {
             alert(res);
             return handleClick();
         }
+        setSnack(true);
+    };
+
+    const handleSnack = () => {
+        setSnack(false);
     };
 
     return (
@@ -72,7 +82,6 @@ export default function SignUpForm() {
                     <div
                         style={{
                             display: 'flex',
-                            // justifyContent: 'center',
                             alignItems: 'center',
                         }}
                     >
@@ -95,6 +104,15 @@ export default function SignUpForm() {
                     </LabelForgotPassword>
                 </UtilsContainer>
             </Form>
+            <Snackbar
+                open={snack}
+                autoHideDuration={6000}
+                onClose={handleSnack}
+            >
+                <Alert onClose={handleSnack} severity="error">
+                    Signup failed!
+                </Alert>
+            </Snackbar>
         </Container>
     );
 }

@@ -15,7 +15,7 @@ export default function Main() {
 
     return (
         <div onClick={() => handleClick()}>
-            <h1>Main</h1>
+            <h1>clcique aqui para sair (just an exit test)</h1>
         </div>
     );
 }

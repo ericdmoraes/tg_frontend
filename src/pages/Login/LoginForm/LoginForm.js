@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+// Third Components
+import Snackbar from '@material-ui/core/Snackbar';
 
 // Form
 import { Form } from '@unform/web';
 
 // Store
-import { signInRequest } from '../../../store/modules/auth/actions';
+import {
+    signInRequest,
+    signFailure,
+} from '../../../store/modules/auth/actions';
+
+// Components
+import Alert from '../../../_Components/Alert/Alert';
 
 // Services
 import navigateTo from '../../../utils/Services/NavigationServices/navigate';
@@ -31,7 +40,13 @@ import {
 export default function LoginForm() {
     const dispatch = useDispatch();
 
+    const { error } = useSelector((state) => state.auth);
+
     const [loading, setLoading] = useState(false);
+
+    // useEffect(() => {
+    //     setSnack(true);
+    // }, [error]);
 
     const handleSubmit = async ({ email, password }) => {
         setLoading(true);
@@ -41,6 +56,10 @@ export default function LoginForm() {
 
     const handleClick = () => {
         return navigateTo('/register');
+    };
+
+    const handleClose = () => {
+        dispatch(signFailure(false));
     };
 
     return (
@@ -83,6 +102,15 @@ export default function LoginForm() {
                     </LabelSignup>
                 </UtilsContainer>
             </Form>
+            <Snackbar
+                open={error}
+                autoHideDuration={6000}
+                onClose={handleClose}
+            >
+                <Alert onClose={handleClose} severity="error">
+                    Mistakes were made!
+                </Alert>
+            </Snackbar>
         </Container>
     );
 }

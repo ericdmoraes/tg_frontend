@@ -20,9 +20,12 @@ export function signInSuccess(token, user) {
     };
 }
 
-export function signFailure() {
+export function signFailure(status) {
     return {
         type: ACTION_TYPES.signFailure,
+        payload: {
+            status,
+        },
     };
 }
 

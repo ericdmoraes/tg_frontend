@@ -6,6 +6,7 @@ const initialState = {
     token: null,
     signed: false,
     loading: false,
+    error: false,
 };
 
 export default function auth(state = initialState, action) {
@@ -19,6 +20,10 @@ export default function auth(state = initialState, action) {
             return produce(state, (draft) => {
                 draft.token = null;
                 draft.signed = false;
+            });
+        case ACTION_TYPES.signFailure:
+            return produce(state, (draft) => {
+                draft.error = action.payload.status;
             });
         default:
             return state;
