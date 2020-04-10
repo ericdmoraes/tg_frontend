@@ -6,7 +6,7 @@ export const routes = {
     register: '/api/v1/users/create',
 };
 
-export const baseUrl = process.env.REACT_APP_API_URL;
+export const baseUrl = process.env.REACT_APP_URLAPI;
 
 export default axios.create({
     baseURL: baseUrl,
