@@ -21,7 +21,6 @@ export function* signIn({ payload }) {
 }
 
 export function signOut() {
-    console.log('oi');
     navigateTo('/login');
 }
 
