@@ -13,6 +13,7 @@ import {
     ImgPlaceholder,
     LabelTitle,
     Label,
+    OptionsContainer,
 } from './HeaderStyles';
 
 export default function Default() {
@@ -28,13 +29,22 @@ export default function Default() {
 
             <UserMenu>
                 {name && (
-                    <>
+                    <div
+                        style={{
+                            marginRight: 5,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}
+                    >
                         <ImgPlaceholder src="https://picsum.photos/45/45?random=1" />
-                        <Label>
-                            Olá, <b>{name}</b>!
-                        </Label>
-                        <Menu />
-                    </>
+                        <OptionsContainer>
+                            <Label>
+                                Olá, <b>{name}</b>!
+                            </Label>
+                            <Menu />
+                        </OptionsContainer>
+                    </div>
                 )}
             </UserMenu>
         </Container>

@@ -1,39 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Tooltip from '@material-ui/core/Tooltip';
+// Redux
+import { useDispatch } from 'react-redux';
 
-import { Icon } from './MenuStyles';
+// Actions
+import { signOut } from '../../../store/modules/auth/actions';
+
+// Styles
+import { Container } from './MenuStyles';
 
 export default function Menu() {
-    const [tooltip, setTooltip] = useState(false);
+    const dispatch = useDispatch();
 
-    const handleTooltip = () => {
-        console.log('oi', tooltip);
-        setTooltip(!tooltip);
+    const handleClick = () => {
+        dispatch(signOut());
     };
 
     return (
-        <ClickAwayListener>
-            <div>
-                <Tooltip
-                    PopperProps={{
-                        disablePortal: true,
-                    }}
-                    onClose={handleTooltip}
-                    open={tooltip}
-                    disableFocusListener
-                    disableHoverListener
-                    disableTouchListener
-                    title={
-                        <div style={{ width: 50, height: 50, color: 'red' }}>
-                            <p>Eric</p>
-                        </div>
-                    }
-                >
-                    <Icon onClick={handleTooltip} />
-                </Tooltip>
-            </div>
-        </ClickAwayListener>
+        <Container>
+            <p onClick={handleClick} style={{ color: 'white' }}>
+                SAIR
+            </p>
+        </Container>
     );
 }

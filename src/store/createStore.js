@@ -7,5 +7,5 @@ export default (reducers, middlewares) => {
               window.__REDUX_DEVTOOLS_EXTENSION__()
             : null;
 
-    return createStore(reducers, compose(applyMiddleware(...middlewares)));
+    return createStore(reducers, compose(applyMiddleware(...middlewares), dev));
 };

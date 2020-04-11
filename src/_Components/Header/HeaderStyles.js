@@ -20,6 +20,14 @@ export const Container = styled.div`
     box-shadow: 0px 3px 30px 0px rgba(0, 0, 0, 0.37);
 `;
 
+export const OptionsContainer = styled.div`
+    display: flex;
+
+    @media (max-width: 767px) {
+        flex-direction: column;
+    }
+`;
+
 export const Title = styled.div`
     height: 80%;
     display: flex;
@@ -60,4 +68,6 @@ export const Icon = styled(IoIosArrowDown)`
 
 export const Label = styled.p`
     color: white;
+    text-align: center;
+    align-self: center;
 `;

@@ -1,21 +1,14 @@
 import React from 'react';
 
 // Redux
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-// Actions
-import { signOut } from '../../store/modules/auth/actions';
+// Components
+import MainStudent from './Student/Main';
+import MainTeacher from './Teacher/Main';
 
 export default function Main() {
-    const dispatch = useDispatch();
+    const { teacher } = useSelector((state) => state.user.profile);
 
-    const handleClick = async () => {
-        dispatch(signOut());
-    };
-
-    return (
-        <div onClick={() => handleClick()}>
-            <h1>clcique aqui para sair (just an exit test)</h1>
-        </div>
-    );
+    return <>{teacher ? <MainTeacher /> : <MainStudent />}</>;
 }

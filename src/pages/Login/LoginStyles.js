@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    backdrop-filter: blur(10px) grayscale(1);
+    /* backdrop-filter: blur(10px) grayscale(1); */
     background-color: rgba(0, 0, 0, 0.4);
     position: absolute;
     top: 0px;

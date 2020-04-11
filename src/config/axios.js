@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export const routes = {
     login: '/api/v1/session',
-    signup: '/api/v1/users/create',
     register: '/api/v1/users/create',
+    subjects: '/api/v1/subject',
 };
 
 export const baseUrl = process.env.REACT_APP_URLAPI;
