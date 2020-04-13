@@ -13,3 +13,16 @@ export const getSubjects = async (requestData) => {
         return [false, error];
     }
 };
+
+export const createSubject = async (name, description) => {
+    try {
+        const { data } = await axios.post(routes.subjects, {
+            name,
+            description,
+        });
+
+        return [data, false];
+    } catch (error) {
+        return [false, error];
+    }
+};

@@ -1,5 +1,10 @@
 import history from './history';
 
-export default (to) => {
-    return history.push(to);
+export default (to, params = null) => {
+    return history.push({
+        pathname: to,
+        state: {
+            params,
+        },
+    });
 };

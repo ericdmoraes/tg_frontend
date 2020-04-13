@@ -32,4 +32,12 @@ module.exports = {
         ],
         'import/prefer-default-export': 'off',
     },
+    settings: {
+        'import/resolver': {
+            'babel-plugin-root-import': {
+                rootPathPrefix: '@',
+                rootPathSuffix: 'src/js',
+            },
+        },
+    },
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { hot } from 'react-hot-loader/root';
 
 // Router
 import { Router } from 'react-router-dom';
@@ -19,7 +20,7 @@ import Routes from './routes';
 // Styles
 import GlobalStyles from './styles/global';
 
-export default function App() {
+function App() {
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>
@@ -31,3 +32,5 @@ export default function App() {
         </Provider>
     );
 }
+
+export default process.env.NODE_ENV === 'development' ? hot(App) : App;

@@ -1,6 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
 
+import styled from 'styled-components';
+
+export const InputCustom = styled.input`
+    border-radius: 5px;
+    height: 30px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #bbbbbb;
+`;
+
 export default function Input({ name, ...rest }) {
     const inputRef = useRef(null);
     const { fieldName, defaultValue = '', registerField } = useField(name);
@@ -12,5 +23,5 @@ export default function Input({ name, ...rest }) {
             path: 'value',
         });
     }, [fieldName, registerField]);
-    return <input ref={inputRef} defaultValue={defaultValue} {...rest} />;
+    return <InputCustom ref={inputRef} defaultValue={defaultValue} {...rest} />;
 }

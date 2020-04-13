@@ -30,7 +30,7 @@ export default function SubjectsList() {
 
     return (
         <>
-            {loading ? (
+            {!sub && loading ? (
                 <p>Carregando</p>
             ) : (
                 sub.map((s) => <Item key={s.id} data={s} />)

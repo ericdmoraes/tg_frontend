@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
+import navigateTo from '../../utils/Services/NavigationServices/navigate';
+
 // Components
 import Menu from './Menu/Menu';
 
@@ -21,9 +23,13 @@ export default function Default() {
 
     const userType = teacher ? 'Professor' : 'Aluno';
 
+    const handleClick = () => {
+        navigateTo('/');
+    };
+
     return (
         <Container>
-            <Title>
+            <Title onClick={handleClick}>
                 <LabelTitle>{userType}</LabelTitle>
             </Title>
 

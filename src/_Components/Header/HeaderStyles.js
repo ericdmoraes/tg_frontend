@@ -12,7 +12,7 @@ export const Container = styled.div`
     padding: 0 35px;
 
     @media (max-width: 767px) {
-        padding: 0px;
+        padding: 3px;
     }
 
     -webkit-box-shadow: 0px 3px 30px 0px rgba(0, 0, 0, 0.37);
@@ -33,6 +33,7 @@ export const Title = styled.div`
     display: flex;
     justify-content: start-end;
     align-items: center;
+    cursor: pointer;
 `;
 
 export const LabelTitle = styled.div`

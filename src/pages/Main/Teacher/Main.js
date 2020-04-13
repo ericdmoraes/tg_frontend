@@ -1,14 +1,18 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { ListHeader } from './MainStyles';
 
 // Components
 import SubjectsList from './SubjectsList/SubjectsList';
+import CreateSubjectButton from './CreateSubject/CreateSubject';
 
 export default function Teacher() {
     return (
         <>
-            <h1>Disciplinas</h1>
+            <ListHeader>
+                <h1>Disciplinas</h1>
+                <CreateSubjectButton />
+            </ListHeader>
             <SubjectsList />
         </>
     );
