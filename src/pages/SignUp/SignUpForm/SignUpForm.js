@@ -48,7 +48,7 @@ export default function SignUpForm() {
         const [res, errRes] = await makeRegister(data);
 
         if (!errRes) {
-            alert(res);
+            alert('Sua conta foi criada. Por favor verifique seu email.');
             return handleClick();
         }
         setSnack(true);
@@ -73,12 +73,6 @@ export default function SignUpForm() {
                         type="email"
                         placeholder="exemplo@exemplo.com"
                     />
-                    <Label>Senha:</Label>
-                    <Input
-                        name="password"
-                        type="password"
-                        placeholder="Sua senha"
-                    />
                     <div
                         style={{
                             display: 'flex',
@@ -91,6 +85,12 @@ export default function SignUpForm() {
                             onChange={handleChange}
                         />
                         <Label>Professor?</Label>
+                    </div>
+                    <div style={{ margin: '15px 0' }}>
+                        <Label>
+                            Após se cadastrar, sua senha sera enviada ao e-mail
+                            que foi cadastrado.
+                        </Label>
                     </div>
                 </FieldsContainer>
                 <ButtonContainer>

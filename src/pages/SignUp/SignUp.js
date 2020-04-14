@@ -12,7 +12,7 @@ export default function Login() {
             <Container>
                 <SignUpForm />
             </Container>
-            <BackgroundImage src="https://picsum.photos/1920/1080" />
+            <BackgroundImage src="https://picsum.photos/1920/1080/?blur=3&grayscale" />
         </>
     );
 }
