@@ -29,11 +29,18 @@ export default function Tests({
 
     return (
         <div>
-            <h1>{`${subjectName} >> Testes`}</h1>
+            <h1>{`${subjectName} - Testes`}</h1>
             {!tests ? (
                 <p>Carregando...</p>
             ) : (
-                tests.map((test) => <p>{test.id}</p>)
+                tests.map((test) => (
+                    <p>
+                        {test.name}
+                        <br />
+                        <b>id:</b>
+                        {test.id}
+                    </p>
+                ))
             )}
         </div>
     );

@@ -9,7 +9,7 @@ import Item from './Item/Item';
 // Service
 import { getSubjects } from '../../../../utils/Services/SubjectsServices/SubjectsService';
 
-export default function SubjectsList() {
+export default function SubjectsList({ status }) {
     const { id } = useSelector((state) => state.user.profile);
 
     const [sub, setSub] = useState(false);
@@ -26,12 +26,15 @@ export default function SubjectsList() {
             return alert(resErr);
         };
         fetchData();
-    }, [id]);
+    }, [id, status]);
 
     return (
         <>
             {!sub && loading ? (
-                <p>Carregando</p>
+                <>
+                    <br />
+                    <p>Carregando</p>
+                </>
             ) : (
                 sub.map((s) => <Item key={s.id} data={s} />)
             )}

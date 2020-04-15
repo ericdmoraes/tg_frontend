@@ -14,11 +14,11 @@ export default createGlobalStyle`
 
     body {
         -webkit-font-smoothing: antialiased !important;
-        background-color: #efefef;
+        background-color: #fff;
     }
 
     body, input, button {
-        color: #333;
+        color: #000;
         font-size: 16px;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }

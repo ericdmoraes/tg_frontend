@@ -5,9 +5,9 @@ import DrawerMenu from '@material-ui/core/Drawer';
 import { Form } from '@unform/web';
 
 // Services
-import { createSubject } from '../../../../../utils/Services/SubjectsServices/SubjectsService';
+import { createSubject } from '../../../../utils/Services/SubjectsServices/SubjectsService';
 
-import Input from '../../../../../_Components/UnformInput/UnformInput';
+import Input from '../../../../_Components/UnformInput/UnformInput';
 
 // Styles
 import { Container, Label, Button } from './DrawerStyles';
