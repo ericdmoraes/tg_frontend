@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 export const InputCustom = styled.input`
     border-radius: 5px;
-    height: 30px;
+    height: 35px;
     padding: 10px;
     width: 100%;
     margin-bottom: 20px;

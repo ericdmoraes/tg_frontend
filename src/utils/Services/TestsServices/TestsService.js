@@ -14,15 +14,16 @@ export const getTests = async (reqData) => {
     }
 };
 
-// export const createSubject = async (name, description) => {
-//     try {
-//         const { data } = await axios.post(routes.subjects, {
-//             name,
-//             description,
-//         });
+export const createTest = async (name, questions_quantity, subject_id) => {
+    try {
+        const { data } = await axios.post(routes.tests, {
+            name,
+            questions_quantity,
+            subject_id,
+        });
 
-//         return [data, false];
-//     } catch (error) {
-//         return [false, error];
-//     }
-// };
+        return [data, false];
+    } catch (error) {
+        return [false, error];
+    }
+};

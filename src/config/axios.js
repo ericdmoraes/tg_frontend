@@ -5,6 +5,7 @@ export const routes = {
     register: '/api/v1/users/create',
     subjects: '/api/v1/subject',
     tests: '/api/v1/test',
+    questions: '/api/v1/question',
 };
 
 export const baseUrl = process.env.REACT_APP_URLAPI;
