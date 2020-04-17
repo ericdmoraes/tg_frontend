@@ -21,6 +21,7 @@ export default function Question({
             setTestId(allUrl[allUrl.length - 1]);
             const [res, resErr] = await getQuestions(testId);
 
+            console.log(res);
             if (!resErr) {
                 setQuestions(res);
             }
@@ -31,8 +32,7 @@ export default function Question({
 
     return (
         <div>
-            {console.log(questions)}
-            {questions &&
+            {questions.length > 0 ? (
                 questions.map((question) => (
                     <div
                         style={{
@@ -45,7 +45,12 @@ export default function Question({
                         <p>a: {question.options_a}</p>
                         <p>b: {question.options_b}</p>
                     </div>
-                ))}
+                ))
+            ) : (
+                <div style={{ width: 400, height: 400 }}>
+                    <p>Nenhuma questão foi criada ainda!</p>
+                </div>
+            )}
         </div>
     );
 }

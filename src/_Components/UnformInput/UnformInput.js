@@ -23,5 +23,13 @@ export default function Input({ name, ...rest }) {
             path: 'value',
         });
     }, [fieldName, registerField]);
-    return <InputCustom ref={inputRef} defaultValue={defaultValue} {...rest} />;
+
+    return (
+        <InputCustom
+            name={name}
+            ref={inputRef}
+            defaultValue={defaultValue}
+            {...rest}
+        />
+    );
 }
