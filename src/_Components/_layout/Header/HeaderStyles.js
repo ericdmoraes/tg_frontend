@@ -5,19 +5,38 @@ import { IoIosArrowDown } from 'react-icons/io';
 export const Container = styled.div`
     width: 100%;
     height: 70px;
-    background-color: black;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 35px;
 
-    @media (max-width: 767px) {
-        padding: 3px;
-    }
-
+    background: rgb(0, 0, 0);
+    background: -moz-linear-gradient(
+        120deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(71, 50, 96, 1) 50%,
+        rgba(40, 22, 79, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+        120deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(71, 50, 96, 1) 50%,
+        rgba(40, 22, 79, 1) 100%
+    );
+    background: linear-gradient(
+        120deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(71, 50, 96, 1) 50%,
+        rgba(40, 22, 79, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#28164f",GradientType=1);
     -webkit-box-shadow: 0px 3px 30px 0px rgba(0, 0, 0, 0.37);
     -moz-box-shadow: 0px 3px 30px 0px rgba(0, 0, 0, 0.37);
     box-shadow: 0px 3px 30px 0px rgba(0, 0, 0, 0.37);
+
+    @media (max-width: 767px) {
+        padding: 3px;
+    }
 `;
 
 export const OptionsContainer = styled.div`

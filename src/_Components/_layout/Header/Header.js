@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import navigateTo from '../../utils/Services/NavigationServices/navigate';
+import navigateTo from '~/utils/Services/NavigationServices/navigate';
 
 // Components
 import Menu from './Menu/Menu';

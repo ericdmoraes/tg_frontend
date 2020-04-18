@@ -4,7 +4,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 // Actions
-import { signOut } from '../../../store/modules/auth/actions';
+import { signOut } from '../../../../store/modules/auth/actions';
 
 // Styles
 import { Container } from './MenuStyles';
@@ -18,7 +18,10 @@ export default function Menu() {
 
     return (
         <Container>
-            <p onClick={handleClick} style={{ color: 'white' }}>
+            <p
+                onClick={handleClick}
+                style={{ color: 'white', cursor: 'pointer' }}
+            >
                 SAIR
             </p>
         </Container>

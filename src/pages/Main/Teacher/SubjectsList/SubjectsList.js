@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 // Redux
 import { useSelector } from 'react-redux';
 
+// Styles
+import { Container, Content } from './SubjectsListsStyles';
+
 // Components
 import Item from './Item/Item';
 
@@ -29,15 +32,17 @@ export default function SubjectsList({ status }) {
     }, [id, status]);
 
     return (
-        <>
-            {!sub && loading ? (
+        <Container>
+            {loading ? (
                 <>
                     <br />
                     <p>Carregando</p>
                 </>
             ) : (
-                sub.map((s) => <Item key={s.id} data={s} />)
+                <Content>
+                    {sub && sub.map((s) => <Item key={s.id} data={s} />)}
+                </Content>
             )}
-        </>
+        </Container>
     );
 }
