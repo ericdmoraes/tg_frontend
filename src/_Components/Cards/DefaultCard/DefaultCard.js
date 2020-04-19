@@ -14,9 +14,10 @@ import { FaCogs } from 'react-icons/fa';
 
 import navigateTo from '~/utils/Services/NavigationServices/navigate';
 
-export default function DefaultCard({ data }) {
+export default function DefaultCard({ data, fields }) {
     const handleClick = (id) => {
-        navigateTo(`/tests/${id}`, data);
+        // console.log(`/${fields.goTo}/${id}`);
+        navigateTo(`/${fields.goTo}/${id}`, data);
     };
 
     const day = new Date(data.createdAt).getDate();
@@ -30,24 +31,24 @@ export default function DefaultCard({ data }) {
             </div>
             <Content>
                 <small>
-                    <b>ID de inscrição: </b>
+                    <b>{fields.field1}</b>
                     {data.id}
                 </small>
                 <DescriptionContainer>
                     <small>
-                        <b>Título:</b>
+                        <b>{fields.field2}</b>
                     </small>
                     <TitleLabel>{data.name}</TitleLabel>
                 </DescriptionContainer>
                 <DescriptionContainer>
                     <small>
-                        <b>Descrição:</b>
+                        <b>{fields.field3}</b>
                     </small>
                     <DescriptionLabel>{data.description}</DescriptionLabel>
                 </DescriptionContainer>
             </Content>
             <GoToTest onClick={() => handleClick(data.id)}>
-                <CTALabel color="white">Ver Testes</CTALabel>
+                <CTALabel color="white">Ver {fields.goToLabel}</CTALabel>
                 <small style={{ color: 'white', marginLeft: 10 }}>
                     <div
                         style={{

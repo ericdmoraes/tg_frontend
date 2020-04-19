@@ -21,7 +21,6 @@ export default function Question({
             setTestId(allUrl[allUrl.length - 1]);
             const [res, resErr] = await getQuestions(testId);
 
-            console.log(res);
             if (!resErr) {
                 setQuestions(res);
             }

@@ -4,7 +4,7 @@ import { ListHeader, Ribbon, Divider, TitleContainer } from './MainStyles';
 
 import Drawer from './Drawer/Drawer';
 
-import { GoThreeBars } from 'react-icons/go';
+import { FaClipboard } from 'react-icons/fa';
 
 // Components
 import SubjectsList from './SubjectsList/SubjectsList';
@@ -22,7 +22,7 @@ export default function Teacher() {
             <ListHeader>
                 <TitleContainer>
                     <Ribbon>
-                        <GoThreeBars style={{ fontSize: 25, color: 'white' }} />
+                        <FaClipboard style={{ fontSize: 25, color: 'white' }} />
                     </Ribbon>
                     <h1>Disciplinas</h1>
                 </TitleContainer>

@@ -56,7 +56,7 @@ export const DescriptionContainer = styled.div`
 
 export const GoToTest = styled.div`
     width: 100%;
-    height: 80px;
+    height: 60px;
     border-top: 0.5px solid black;
     background-color: ${AppColor};
     margin-top: 10;

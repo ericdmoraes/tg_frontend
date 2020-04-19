@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 // Component
-import Item from './Item/Item';
 import Drawer from './Drawer/Drawer';
+import TestList from './TestsList/TestsList';
 
 // Styles
 import { HeaderContainer, CreateTestButton, Label } from './TestsStyles';
-
-// Services
-import { getTests } from '../../utils/Services/TestsServices/TestsService';
 
 export default function Tests({
     history: {
@@ -18,7 +15,6 @@ export default function Tests({
     },
     location: { pathname },
 }) {
-    const [tests, setTests] = useState(null);
     const [subjectName, setSubjectName] = useState(null);
     const [open, setOpen] = useState(false);
     const [subjectId, setsubjectId] = useState(false);
@@ -26,15 +22,9 @@ export default function Tests({
     useEffect(() => {
         const fetch = async () => {
             setSubjectName(params.name);
-
             const allUrl = pathname.split('/');
             setsubjectId(allUrl[allUrl.length - 1]);
-            const [res, resErr] = await getTests(allUrl[allUrl.length - 1]);
-            if (!resErr) {
-                setTests(res);
-            }
         };
-
         fetch();
     }, [open]);
 
@@ -45,16 +35,13 @@ export default function Tests({
     return (
         <>
             <HeaderContainer>
-                <h1>{`${subjectName} - Testes`}</h1>
+                <h1>{subjectName}</h1>
                 <CreateTestButton onClick={handleClose}>
                     <Label>Criar Teste</Label>
                 </CreateTestButton>
             </HeaderContainer>
-            {!tests ? (
-                <p>Carregando...</p>
-            ) : (
-                tests.map((test) => <Item key={test.id} data={test} />)
-            )}
+
+            <TestList pathname={pathname} />
             <Drawer
                 anchor="bottom"
                 open={open}

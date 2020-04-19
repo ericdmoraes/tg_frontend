@@ -1,20 +1,19 @@
 import React from 'react';
 
-import { TestContainer } from './ItemStyles';
+import { Content, Container } from './ItemStyles';
+
+import Card from '~/_Components/Cards/DefaultCard/DefaultCard';
 
 import navigateTo from '../../../utils/Services/NavigationServices/navigate';
 
 export default function Item({ data }) {
-    const handleClick = () => {
-        navigateTo(`/question/${data.id}`, data);
+    const fields = {
+        field1: 'ID do teste: ',
+        field2: 'Nome: ',
+        field3: null,
+        goToLabel: 'Questões',
+        goTo: 'question',
     };
 
-    return (
-        <TestContainer onClick={handleClick}>
-            {data.name}
-            <br />
-            <b>id: </b>
-            {data.id}
-        </TestContainer>
-    );
+    return <Card fields={fields} data={data} />;
 }
