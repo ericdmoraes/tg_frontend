@@ -10,7 +10,7 @@ export const Container = styled.div`
     justify-content: space-between;
     padding: 0 35px;
 
-    background: rgb(0, 0, 0);
+    /* background: rgb(0, 0, 0); */
     background: -moz-linear-gradient(
         120deg,
         rgba(0, 0, 0, 1) 0%,

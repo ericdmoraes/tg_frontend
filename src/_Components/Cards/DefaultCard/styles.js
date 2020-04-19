@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { AppColor } from '~/styles/global';
 
 export const Container = styled.div`
     background-color: #fff;
@@ -9,6 +10,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 
     @media (max-width: 767px) {
         max-width: 97%;
@@ -30,7 +32,7 @@ export const CTA = styled.div`
     width: 100%;
     height: 100;
     border-top: 0.5px solid black;
-    background-color: rgb(71, 50, 96);
+    background-color: ${AppColor};
     margin-top: 10;
 `;
 
@@ -56,7 +58,7 @@ export const GoToTest = styled.div`
     width: 100%;
     height: 80px;
     border-top: 0.5px solid black;
-    background-color: rgb(71, 50, 96);
+    background-color: ${AppColor};
     margin-top: 10;
     display: flex;
     justify-content: center;

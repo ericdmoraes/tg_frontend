@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
-import { ListHeader } from './MainStyles';
+import { ListHeader, Ribbon } from './MainStyles';
 
 import Drawer from './Drawer/Drawer';
+
+import { GoThreeBars } from 'react-icons/go';
 
 // Components
 import SubjectsList from './SubjectsList/SubjectsList';
@@ -18,6 +20,9 @@ export default function Teacher() {
     return (
         <>
             <ListHeader>
+                <Ribbon>
+                    <GoThreeBars style={{ fontSize: 25, color: 'white' }} />
+                </Ribbon>
                 <h1>Disciplinas</h1>
                 <div
                     style={{

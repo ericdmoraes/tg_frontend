@@ -10,6 +10,8 @@ import {
     CTALabel,
 } from './styles';
 
+import { FaCogs } from 'react-icons/fa';
+
 import navigateTo from '~/utils/Services/NavigationServices/navigate';
 
 export default function DefaultCard({ data }) {
@@ -23,6 +25,9 @@ export default function DefaultCard({ data }) {
 
     return (
         <Container>
+            <div style={{ position: 'absolute', top: 10, right: 10 }}>
+                <FaCogs style={{ fontSize: 20 }} />
+            </div>
             <Content>
                 <small>
                     <b>ID de inscrição: </b>

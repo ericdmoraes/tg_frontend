@@ -1,5 +1,29 @@
 import { createGlobalStyle } from 'styled-components';
 
+export const AppColor = 'rgb(71, 50, 96)';
+
+export const GradientDefault = `
+background: -moz-linear-gradient(
+    120deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(71, 50, 96, 1) 50%,
+    rgba(40, 22, 79, 1) 100%
+);
+background: -webkit-linear-gradient(
+    120deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(71, 50, 96, 1) 50%,
+    rgba(40, 22, 79, 1) 100%
+);
+background: linear-gradient(
+    120deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(71, 50, 96, 1) 50%,
+    rgba(40, 22, 79, 1) 100%
+);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#28164f",GradientType=1);
+`;
+
 export default createGlobalStyle`
     * {
         margin: 0px;
