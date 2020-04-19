@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { GradientDefault } from '~/styles/global';
 import UnformInput from '../../../../_Components/UnformInput/UnformInput';
 
 export const Container = styled.div`
@@ -25,12 +25,13 @@ export const Button = styled.button`
     width: 30%;
     height: 37px;
     border-radius: 5px;
-    border: 0px solid black;
-    background-color: black;
     color: white;
     align-items: center;
     justify-content: center;
     display: flex;
+
+    border: 0 solid black;
+    ${GradientDefault};
 
     @media (max-width: 767px) {
         width: 100%;

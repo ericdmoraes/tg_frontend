@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { ListHeader, Ribbon } from './MainStyles';
+import { ListHeader, Ribbon, Divider, TitleContainer } from './MainStyles';
 
 import Drawer from './Drawer/Drawer';
 
@@ -20,17 +20,13 @@ export default function Teacher() {
     return (
         <>
             <ListHeader>
-                <Ribbon>
-                    <GoThreeBars style={{ fontSize: 25, color: 'white' }} />
-                </Ribbon>
-                <h1>Disciplinas</h1>
-                <div
-                    style={{
-                        height: '37px',
-                        borderLeft: '0.5px solid black',
-                        margin: '0 30px',
-                    }}
-                />
+                <TitleContainer>
+                    <Ribbon>
+                        <GoThreeBars style={{ fontSize: 25, color: 'white' }} />
+                    </Ribbon>
+                    <h1>Disciplinas</h1>
+                </TitleContainer>
+                <Divider />
                 <CreateSubjectButton handleClose={handleClose} />
             </ListHeader>
             <SubjectsList status={open} />

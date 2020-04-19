@@ -29,3 +29,27 @@ export const Ribbon = styled.div`
     display: flex;
     margin-right: 10px;
 `;
+
+export const TitleContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 767px) {
+        flex-direction: row;
+    }
+`;
+
+export const Divider = styled.div`
+    height: 37px;
+    border-left: 0.5px solid black;
+    margin: 0 30px;
+
+    @media (max-width: 767px) {
+        height: 0px;
+        width: 80%;
+        border-left: 0px solid black;
+        border-bottom: 0.5px solid black;
+        margin: 10px 0px;
+    }
+`;

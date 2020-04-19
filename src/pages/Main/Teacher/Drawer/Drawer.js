@@ -4,6 +4,8 @@ import React from 'react';
 import DrawerMenu from '@material-ui/core/Drawer';
 import { Form } from '@unform/web';
 
+import { IoMdClose, IoMdAdd } from 'react-icons/io';
+
 // Services
 import { createSubject } from '../../../../utils/Services/SubjectsServices/SubjectsService';
 
@@ -23,6 +25,20 @@ export default function Drawer({ handleClose, open, anchor }) {
 
     return (
         <DrawerMenu anchor="bottom" open={open} onClose={handleClose}>
+            <div
+                onClick={handleClose}
+                style={{
+                    height: 40,
+                    width: 40,
+                    right: 10,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    position: 'absolute',
+                }}
+            >
+                <IoMdClose style={{ fontSize: 25, cursor: 'pointer' }} />
+            </div>
             <Form onSubmit={handleSubmit}>
                 <Container>
                     <h1>Criar disciplina</h1>
@@ -38,7 +54,10 @@ export default function Drawer({ handleClose, open, anchor }) {
                         type="text"
                         placeholder="Uma descrição simples da disciplina"
                     />
-                    <Button type="submit">Criar disciplina</Button>
+                    <Button type="submit">
+                        <IoMdAdd style={{ fontSize: 25, color: 'white' }} />
+                        <p>Criar disciplina</p>
+                    </Button>
                 </Container>
             </Form>
         </DrawerMenu>
