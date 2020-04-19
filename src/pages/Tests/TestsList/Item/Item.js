@@ -4,7 +4,7 @@ import { Content, Container } from './ItemStyles';
 
 import Card from '~/_Components/Cards/DefaultCard/DefaultCard';
 
-import navigateTo from '../../../utils/Services/NavigationServices/navigate';
+import navigateTo from '~/utils/Services/NavigationServices/navigate';
 
 export default function Item({ data }) {
     const fields = {

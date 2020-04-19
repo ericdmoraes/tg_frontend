@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
-    width: 100%;
-    /* background-color: silver; */
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
-    margin-bottom: 10px;
+    height: 100%;
+    padding: 0 20px;
+
+    @media (max-width: 767px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 export const Label = styled.p`

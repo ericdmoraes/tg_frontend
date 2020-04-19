@@ -6,7 +6,7 @@ import { Container, Content } from './styles';
 import { getTests } from '~/utils/Services/TestsServices/TestsService';
 
 // Components
-import Item from '../Item/Item';
+import Item from './Item/Item';
 
 export default function TestsList({ pathname }) {
     const [tests, setTests] = useState(null);

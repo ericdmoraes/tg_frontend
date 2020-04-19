@@ -18,6 +18,10 @@ export const Container = styled.div`
     &:hover {
         background-color: rgba(0, 0, 0, 0.3);
         cursor: pointer;
+
+        > p {
+            text-decoration: underline;
+        }
     }
 
     @media (max-width: 767px) {

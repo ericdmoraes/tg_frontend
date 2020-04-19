@@ -16,7 +16,6 @@ import navigateTo from '~/utils/Services/NavigationServices/navigate';
 
 export default function DefaultCard({ data, fields }) {
     const handleClick = (id) => {
-        // console.log(`/${fields.goTo}/${id}`);
         navigateTo(`/${fields.goTo}/${id}`, data);
     };
 

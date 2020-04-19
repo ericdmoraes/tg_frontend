@@ -64,4 +64,10 @@ export const GoToTest = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    &:hover {
+        > h3 {
+            text-decoration: underline;
+        }
+    }
 `;

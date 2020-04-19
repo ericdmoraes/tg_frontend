@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+import { FaClipboardList } from 'react-icons/fa';
+import { MdNoteAdd } from 'react-icons/md';
+
 // Component
-import Drawer from './Drawer/Drawer';
+import Title from '~/_Components/PageTitle/PageTitle';
 import TestList from './TestsList/TestsList';
+import Drawer from './Drawer/Drawer';
+import OpenDrawer from '~/_Components/OpenDrawerButton/OpenDrawerButton';
 
 // Styles
 import { HeaderContainer, CreateTestButton, Label } from './TestsStyles';
@@ -35,10 +40,12 @@ export default function Tests({
     return (
         <>
             <HeaderContainer>
-                <h1>{subjectName}</h1>
-                <CreateTestButton onClick={handleClose}>
-                    <Label>Criar Teste</Label>
-                </CreateTestButton>
+                <Title title={subjectName} Icon={FaClipboardList} />
+                <OpenDrawer
+                    handleClose={handleClose}
+                    text="Criar Teste"
+                    Icon={MdNoteAdd}
+                />
             </HeaderContainer>
 
             <TestList pathname={pathname} />
