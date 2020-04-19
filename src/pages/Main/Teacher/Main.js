@@ -19,6 +19,13 @@ export default function Teacher() {
         <>
             <ListHeader>
                 <h1>Disciplinas</h1>
+                <div
+                    style={{
+                        height: '37px',
+                        borderLeft: '0.5px solid black',
+                        margin: '0 30px',
+                    }}
+                />
                 <CreateSubjectButton handleClose={handleClose} />
             </ListHeader>
             <SubjectsList status={open} />

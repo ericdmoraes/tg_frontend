@@ -36,6 +36,7 @@ export const CTA = styled.div`
 
 export const TitleLabel = styled.h2`
     color: ${({ color }) => (color ? color : 'black')};
+    border-right: 1px solid white;
 `;
 
 export const CTALabel = styled.h3`
@@ -44,6 +45,7 @@ export const CTALabel = styled.h3`
 
 export const DescriptionLabel = styled.p`
     color: black;
+    font-weight: 100;
 `;
 
 export const DescriptionContainer = styled.div`

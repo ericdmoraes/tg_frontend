@@ -17,13 +17,23 @@ export default function DefaultCard({ data }) {
         navigateTo(`/tests/${id}`, data);
     };
 
+    const day = new Date(data.createdAt).getDate();
+    const month = new Date(data.createdAt).getMonth();
+    const year = new Date(data.createdAt).getFullYear();
+
     return (
         <Container>
             <Content>
                 <small>
-                    <b>Título:</b>
+                    <b>ID de inscrição: </b>
+                    {data.id}
                 </small>
-                <TitleLabel>{data.name}</TitleLabel>
+                <DescriptionContainer>
+                    <small>
+                        <b>Título:</b>
+                    </small>
+                    <TitleLabel>{data.name}</TitleLabel>
+                </DescriptionContainer>
                 <DescriptionContainer>
                     <small>
                         <b>Descrição:</b>
@@ -34,13 +44,17 @@ export default function DefaultCard({ data }) {
             <GoToTest onClick={() => handleClick(data.id)}>
                 <CTALabel color="white">Ver Testes</CTALabel>
                 <small style={{ color: 'white', marginLeft: 10 }}>
-                    <b>{`Criado em: ${new Date(
-                        data.createdAt
-                    ).getDate()}/${new Date(
-                        data.createdAt
-                    ).getMonth()}/${new Date(
-                        data.createdAt
-                    ).getFullYear()}`}</b>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            borderLeft: '1px solid white',
+                            paddingLeft: 10,
+                        }}
+                    >
+                        <b>{`Criado em: `}</b>
+                        {`${day}/${month}/${year}`}
+                    </div>
                 </small>
             </GoToTest>
         </Container>

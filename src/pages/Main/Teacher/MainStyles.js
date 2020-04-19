@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const ListHeader = styled.div`
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    /* justify-content: space-between; */
+    align-items: center;
     height: 100%;
 
     @media (max-width: 767px) {
