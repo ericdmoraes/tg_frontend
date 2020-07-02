@@ -3,8 +3,11 @@ import React, { useEffect, useState } from 'react';
 // Redux
 import { useSelector } from 'react-redux';
 
+// Material ui
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 // Styles
-import { Container, Content } from './SubjectsListsStyles';
+import * as S from './SubjectsListsStyles';
 
 // Components
 import Item from './Item/Item';
@@ -32,17 +35,20 @@ export default function SubjectsList({ status }) {
     }, [id, status]);
 
     return (
-        <Container>
+        <S.Container>
             {loading ? (
-                <>
-                    <br />
-                    <p>Carregando</p>
-                </>
-            ) : (
-                <Content>
+                <S.NoQuestionsContainer>
+                    <CircularProgress />
+                </S.NoQuestionsContainer>
+            ) : sub.length > 0 ? (
+                <S.Content>
                     {sub && sub.map((s) => <Item key={s.id} data={s} />)}
-                </Content>
+                </S.Content>
+            ) : (
+                <S.NoQuestionsContainer>
+                    Você ainda não criou uma disciplina...
+                </S.NoQuestionsContainer>
             )}
-        </Container>
+        </S.Container>
     );
 }

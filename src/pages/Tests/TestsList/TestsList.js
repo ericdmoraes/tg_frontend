@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, Content } from './styles';
+import * as S from './styles';
 
 // Services
 import { getTests } from '~/utils/Services/TestsServices/TestsService';
@@ -24,16 +24,22 @@ export default function TestsList({ pathname }) {
     }, []);
 
     return (
-        <Container>
+        <S.Container>
             {!tests ? (
-                <p>Carregando...</p>
-            ) : (
-                <Content>
+                <S.NoDataContainer>
+                    <p>Carregando...</p>
+                </S.NoDataContainer>
+            ) : tests.length > 0 ? (
+                <S.Content>
                     {tests.map((test) => (
                         <Item key={test.id} data={test} />
                     ))}
-                </Content>
+                </S.Content>
+            ) : (
+                <S.NoDataContainer>
+                    <p>Você ainda não criou nenhum teste...</p>
+                </S.NoDataContainer>
             )}
-        </Container>
+        </S.Container>
     );
 }

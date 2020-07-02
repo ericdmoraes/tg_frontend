@@ -21,3 +21,11 @@ export const Content = styled.div`
         justify-content: center;
     }
 `;
+
+export const NoDataContainer = styled.div`
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;

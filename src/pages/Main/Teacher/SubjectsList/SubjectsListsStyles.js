@@ -19,3 +19,11 @@ export const Content = styled.div`
         justify-content: center;
     }
 `;
+
+export const NoQuestionsContainer = styled.div`
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
