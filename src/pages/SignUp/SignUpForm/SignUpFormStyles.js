@@ -100,3 +100,8 @@ export const LabelForgotPassword = styled.p`
     font-size: 14px;
     cursor: pointer;
 `;
+
+export const TeacherCheck = styled.div`
+    display: flex;
+    align-items: center;
+`;

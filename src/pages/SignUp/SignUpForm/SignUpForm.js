@@ -8,19 +8,7 @@ import { Form } from '@unform/web';
 import Alert from '../../../_Components/Alert/Alert';
 
 // Styles
-import {
-    Container,
-    HeaderContainer,
-    Title,
-    FieldsContainer,
-    Input,
-    Label,
-    Button,
-    ButtonContainer,
-    Icon,
-    LabelForgotPassword,
-    UtilsContainer,
-} from './SignUpFormStyles';
+import * as S from './SignUpFormStyles';
 
 // Services
 import navigateTo from '../../../utils/Services/NavigationServices/navigate';
@@ -29,6 +17,8 @@ import { makeRegister } from '../../../utils/Services/SignUpServices/SignUpServi
 export default function SignUpForm() {
     const [check, setCheck] = useState(false);
     const [snack, setSnack] = useState(false);
+    const [created, setCreated] = useState(false);
+    const [errorMsg, setErrorMsg] = useState(false);
 
     const handleClick = () => {
         return navigateTo('/login');
@@ -45,12 +35,13 @@ export default function SignUpForm() {
             password,
             teacher: check,
         };
-        const [res, errRes] = await makeRegister(data);
 
-        if (!errRes) {
-            alert('Sua conta foi criada. Por favor verifique seu email.');
-            return handleClick();
+        const [res, err] = await makeRegister(data);
+
+        if (!err) {
+            return setCreated(true);
         }
+        setErrorMsg(err.data);
         setSnack(true);
     };
 
@@ -59,60 +50,69 @@ export default function SignUpForm() {
     };
 
     return (
-        <Container>
+        <S.Container>
             <Form onSubmit={handleSubmit}>
-                <HeaderContainer>
-                    <Title>Cadastrar</Title>
-                </HeaderContainer>
-                <FieldsContainer>
-                    <Label>Nome:</Label>
-                    <Input name="name" type="text" placeholder="Seu nome" />
-                    <Label>E-mail:</Label>
-                    <Input
-                        name="email"
-                        type="email"
-                        placeholder="exemplo@exemplo.com"
-                    />
-                    <div
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <input
-                            style={{ marginRight: 5 }}
-                            type="checkbox"
-                            onChange={handleChange}
-                        />
-                        <Label>Professor?</Label>
-                    </div>
-                    <div style={{ margin: '15px 0' }}>
-                        <Label>
-                            Após se cadastrar, sua senha sera enviada ao e-mail
-                            que foi cadastrado.
-                        </Label>
-                    </div>
-                </FieldsContainer>
-                <ButtonContainer>
-                    <Button type="submit">
-                        <Icon px={16} /> Criar conta
-                    </Button>
-                </ButtonContainer>
-                <UtilsContainer>
-                    <LabelForgotPassword onClick={() => handleClick()}>
+                {!created ? (
+                    <>
+                        <S.HeaderContainer>
+                            <S.Title>Cadastrar</S.Title>
+                        </S.HeaderContainer>
+                        <S.FieldsContainer>
+                            <S.Label>Nome:</S.Label>
+                            <S.Input
+                                name="name"
+                                type="text"
+                                placeholder="Seu nome"
+                            />
+                            <S.Label>E-mail:</S.Label>
+                            <S.Input
+                                name="email"
+                                type="email"
+                                placeholder="exemplo@exemplo.com"
+                            />
+                            <S.TeacherCheck>
+                                <input
+                                    style={{ marginRight: 5 }}
+                                    type="checkbox"
+                                    onChange={handleChange}
+                                />
+                                <S.Label>Professor?</S.Label>
+                            </S.TeacherCheck>
+                        </S.FieldsContainer>
+                        <S.ButtonContainer>
+                            <S.Button type="submit">
+                                <S.Icon px={16} /> Criar conta
+                            </S.Button>
+                        </S.ButtonContainer>
+                    </>
+                ) : (
+                    <S.Label>
+                        Por favor, verifique sua caixa de emails, sua senha foi
+                        enviada pra lá! :)
+                    </S.Label>
+                )}
+                <S.UtilsContainer>
+                    <S.LabelForgotPassword onClick={() => handleClick()}>
                         Fazer login
-                    </LabelForgotPassword>
-                </UtilsContainer>
+                    </S.LabelForgotPassword>
+                </S.UtilsContainer>
             </Form>
+            <div
+                style={{
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                }}
+            />
             <Snackbar
                 open={snack}
                 autoHideDuration={6000}
                 onClose={handleSnack}
             >
                 <Alert onClose={handleSnack} severity="error">
-                    Signup failed!
+                    {errorMsg}
                 </Alert>
             </Snackbar>
-        </Container>
+        </S.Container>
     );
 }

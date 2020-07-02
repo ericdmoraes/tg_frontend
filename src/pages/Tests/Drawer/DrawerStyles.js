@@ -6,6 +6,16 @@ export const Container = styled.div`
     padding: 20px;
 `;
 
+export const CloseButtonContainer = styled.div`
+    height: 40px;
+    width: 40px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+`;
+
 export const Label = styled.p`
     font-weight: 500;
     color: black;

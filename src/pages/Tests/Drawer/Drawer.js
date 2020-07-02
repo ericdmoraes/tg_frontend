@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 
 // Compoents
 import DrawerMenu from '@material-ui/core/Drawer';
+import { IoMdClose } from 'react-icons/io';
 import { Form } from '@unform/web';
 
 // Services
 import { createTest } from '../../../utils/Services/TestsServices/TestsService';
 import { createQuestions } from '../../../utils/Services/QuestionServices/QuestionServices';
 
+// Components
 import Input from '../../../_Components/UnformInput/UnformInput';
 
 // Styles
-import { Container, Label, Button } from './DrawerStyles';
+import { Container, Label, Button, CloseButtonContainer } from './DrawerStyles';
 
 export default function Drawer({ handleClose, open, subjectId: subject_id }) {
-    const [correct, setCorrect] = useState({});
     const [questions, addQuestion] = useState([
         {
             enunciated: '',
@@ -28,19 +29,15 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
         },
     ]);
 
-    // Primeiro - criar o teste
-    // Segundo - pegar o retorno da criação
-    // Terceiro - com o id do teste, criar as questões
-
     const handleSubmit = async ({ name }) => {
         const topic_id = 1;
-
         const questions_quantity = questions.length;
         const [res, resErr] = await createTest(
             name,
             questions_quantity,
             subject_id
         );
+
         if (!resErr) {
             const [questionCreated, questionErr] = await createQuestions(
                 res.id,
@@ -104,19 +101,20 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
 
     return (
         <DrawerMenu anchor="bottom" open={open} onClose={handleClose}>
+            <CloseButtonContainer onClick={handleClose}>
+                <IoMdClose style={{ fontSize: 25, cursor: 'pointer' }} />
+            </CloseButtonContainer>
             <Form id="createTest" onSubmit={handleSubmit}>
                 <Container>
-                    <h1>Criar teste {subject_id}</h1>
+                    <h1>Criar Teste</h1>
                     <Label>Nome:</Label>
                     <Input
                         name="name"
                         type="text"
                         placeholder="Nome do teste"
                     />
-
                     <p onClick={handleAddQuestion}>Adicionar questão</p>
                     <br />
-
                     {questions &&
                         questions.map((question, index) => (
                             <div
@@ -194,13 +192,9 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
                                     name="correct_option"
                                 >
                                     <option value="options_a">Opção A</option>
-
                                     <option value="options_b">Opção B</option>
-
                                     <option value="options_c">Opção C</option>
-
                                     <option value="options_d">Opção D</option>
-
                                     <option value="options_e">Opção E</option>
                                 </select>
                             </div>

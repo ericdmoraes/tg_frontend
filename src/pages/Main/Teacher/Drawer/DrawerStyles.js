@@ -41,3 +41,13 @@ export const Button = styled.button`
         background-color: rgba(0, 0, 0, 0.6);
     }
 `;
+
+export const CloseButtonContainer = styled.div`
+    height: 40px;
+    width: 40px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+`;

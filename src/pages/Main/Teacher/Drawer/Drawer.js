@@ -7,12 +7,12 @@ import { Form } from '@unform/web';
 import { IoMdClose, IoMdAdd } from 'react-icons/io';
 
 // Services
-import { createSubject } from '../../../../utils/Services/SubjectsServices/SubjectsService';
+import { createSubject } from '~/utils/Services/SubjectsServices/SubjectsService';
 
-import Input from '../../../../_Components/UnformInput/UnformInput';
+import Input from '~/_Components/UnformInput/UnformInput';
 
 // Styles
-import { Container, Label, Button } from './DrawerStyles';
+import { Container, Label, Button, CloseButtonContainer } from './DrawerStyles';
 
 export default function Drawer({ handleClose, open, anchor }) {
     const handleSubmit = async ({ name, description }) => {
@@ -25,20 +25,9 @@ export default function Drawer({ handleClose, open, anchor }) {
 
     return (
         <DrawerMenu anchor="bottom" open={open} onClose={handleClose}>
-            <div
-                onClick={handleClose}
-                style={{
-                    height: 40,
-                    width: 40,
-                    right: 10,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    position: 'absolute',
-                }}
-            >
+            <CloseButtonContainer onClick={handleClose}>
                 <IoMdClose style={{ fontSize: 25, cursor: 'pointer' }} />
-            </div>
+            </CloseButtonContainer>
             <Form onSubmit={handleSubmit}>
                 <Container>
                     <h1>Criar disciplina</h1>
