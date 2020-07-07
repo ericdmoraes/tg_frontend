@@ -10,20 +10,17 @@ import { signOut } from '../../../../store/modules/auth/actions';
 import { Container } from './MenuStyles';
 
 export default function Menu() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const handleClick = () => {
-        dispatch(signOut());
-    };
+  const handleClick = () => {
+    dispatch(signOut());
+  };
 
-    return (
-        <Container>
-            <p
-                onClick={handleClick}
-                style={{ color: 'white', cursor: 'pointer' }}
-            >
-                SAIR
-            </p>
-        </Container>
-    );
+  return (
+    <Container>
+      <p onClick={handleClick} style={{ color: 'white', cursor: 'pointer' }}>
+        SAIR
+      </p>
+    </Container>
+  );
 }

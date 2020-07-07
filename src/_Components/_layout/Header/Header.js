@@ -8,51 +8,37 @@ import navigateTo from '~/utils/Services/NavigationServices/navigate';
 import Menu from './Menu/Menu';
 
 // Styles
-import {
-    Container,
-    Title,
-    UserMenu,
-    ImgPlaceholder,
-    LabelTitle,
-    Label,
-    OptionsContainer,
-} from './HeaderStyles';
+import * as S from './HeaderStyles';
 
 export default function Default() {
-    const { name, teacher } = useSelector((state) => state.user.profile);
+  const { name, teacher } = useSelector((state) => state.user.profile);
 
-    const userType = teacher ? 'Professor' : 'Aluno';
+  const userType = teacher ? 'Professor' : 'Aluno';
 
-    const handleClick = () => {
-        navigateTo('/');
-    };
+  const handleClick = () => {
+    navigateTo('/');
+  };
 
-    return (
-        <Container>
-            <Title onClick={handleClick}>
-                <LabelTitle>{userType}</LabelTitle>
-            </Title>
+  return (
+    <S.Container>
+      <S.Title onClick={handleClick}>
+        <S.LabelTitle>{userType}</S.LabelTitle>
+      </S.Title>
 
-            <UserMenu>
-                {name && (
-                    <div
-                        style={{
-                            marginRight: 5,
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <ImgPlaceholder src="https://picsum.photos/45/45?random=1" />
-                        <OptionsContainer>
-                            <Label>
-                                Olá, <b>{name}</b>!
-                            </Label>
-                            <Menu />
-                        </OptionsContainer>
-                    </div>
-                )}
-            </UserMenu>
-        </Container>
-    );
+      <S.UserMenu>
+        {name && (
+          <S.NameContainer>
+            <S.ImgPlaceholder src="https://picsum.photos/45/45?random=1" />
+
+            <S.OptionsContainer>
+              <S.Label>
+                Olá, <b>{name}</b>!
+              </S.Label>
+              <Menu />
+            </S.OptionsContainer>
+          </S.NameContainer>
+        )}
+      </S.UserMenu>
+    </S.Container>
+  );
 }

@@ -1,37 +1,37 @@
 import React, { useState } from 'react';
 
+// Styles
 import { ListHeader } from './MainStyles';
 
-import Drawer from './Drawer/Drawer';
-
+// Icons
 import { FaClipboard } from 'react-icons/fa';
 import { MdPlaylistAdd } from 'react-icons/md';
 
-import ButtonOpenDrawer from '~/_Components/OpenDrawerButton/OpenDrawerButton';
-
 // Components
+import ButtonOpenDrawer from '~/_Components/OpenDrawerButton/OpenDrawerButton';
 import SubjectsList from './SubjectsList/SubjectsList';
 import Title from '~/_Components/PageTitle/PageTitle';
+import Drawer from './Drawer/Drawer';
 
 export default function Teacher() {
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    const handleClose = () => {
-        setOpen(!open);
-    };
+  const handleClose = () => {
+    setOpen(!open);
+  };
 
-    return (
-        <>
-            <ListHeader>
-                <Title title="Disciplinas" Icon={FaClipboard} />
-                <ButtonOpenDrawer
-                    Icon={MdPlaylistAdd}
-                    text="Criar Disciplina"
-                    handleClose={handleClose}
-                />
-            </ListHeader>
-            <SubjectsList status={open} />
-            <Drawer anchor="bottom" open={open} handleClose={handleClose} />
-        </>
-    );
+  return (
+    <>
+      <ListHeader>
+        <Title title="Disciplinas" Icon={FaClipboard} />
+        <ButtonOpenDrawer
+          Icon={MdPlaylistAdd}
+          text="Criar Disciplina"
+          handleClose={handleClose}
+        />
+      </ListHeader>
+      <SubjectsList status={open} />
+      <Drawer anchor="bottom" open={open} handleClose={handleClose} />
+    </>
+  );
 }
