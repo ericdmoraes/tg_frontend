@@ -10,51 +10,53 @@ import Drawer from './Drawer/Drawer';
 import OpenDrawer from '~/_Components/OpenDrawerButton/OpenDrawerButton';
 
 // Styles
-import { HeaderContainer, CreateTestButton, Label } from './TestsStyles';
+import { HeaderContainer } from './TestsStyles';
 
 export default function Tests({
-    history: {
-        location: {
-            state: { params },
-        },
+  history: {
+    location: {
+      state: {
+        params: { name },
+      },
     },
-    location: { pathname },
+  },
+  location: { pathname },
 }) {
-    const [subjectName, setSubjectName] = useState(null);
-    const [open, setOpen] = useState(false);
-    const [subjectId, setsubjectId] = useState(false);
+  const [subjectName, setSubjectName] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [subjectId, setsubjectId] = useState(false);
 
-    useEffect(() => {
-        const fetch = async () => {
-            setSubjectName(params.name);
-            const allUrl = pathname.split('/');
-            setsubjectId(allUrl[allUrl.length - 1]);
-        };
-        fetch();
-    }, [open]);
-
-    const handleClose = () => {
-        setOpen(!open);
+  useEffect(() => {
+    const fetch = async () => {
+      setSubjectName(name);
+      const allUrl = pathname.split('/');
+      setsubjectId(allUrl[allUrl.length - 1]);
     };
+    fetch();
+  }, [open, name, pathname]);
 
-    return (
-        <>
-            <HeaderContainer>
-                <Title title={subjectName} Icon={FaClipboardList} />
-                <OpenDrawer
-                    handleClose={handleClose}
-                    text="Criar Teste"
-                    Icon={MdNoteAdd}
-                />
-            </HeaderContainer>
+  const handleClose = () => {
+    setOpen(!open);
+  };
 
-            <TestList pathname={pathname} />
-            <Drawer
-                anchor="bottom"
-                open={open}
-                handleClose={handleClose}
-                subjectId={subjectId}
-            />
-        </>
-    );
+  return (
+    <>
+      <HeaderContainer>
+        <Title title={subjectName} Icon={FaClipboardList} />
+        <OpenDrawer
+          handleClose={handleClose}
+          text="Criar Teste"
+          Icon={MdNoteAdd}
+        />
+      </HeaderContainer>
+
+      <TestList pathname={pathname} />
+      <Drawer
+        anchor="bottom"
+        open={open}
+        handleClose={handleClose}
+        subjectId={subjectId}
+      />
+    </>
+  );
 }

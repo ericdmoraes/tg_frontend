@@ -4,52 +4,52 @@ import React, { useEffect, useState } from 'react';
 import { getQuestions } from '../../utils/Services/QuestionServices/QuestionServices';
 
 export default function Question({
-    history: {
-        location: {
-            state: { params },
-        },
+  history: {
+    location: {
+      state: { params },
     },
-    location: { pathname },
+  },
+  location: { pathname },
 }) {
-    const [testId, setTestId] = useState(null);
+  const [testId, setTestId] = useState(null);
 
-    const [questions, setQuestions] = useState(false);
+  const [questions, setQuestions] = useState(false);
 
-    useEffect(() => {
-        const fetch = async () => {
-            const allUrl = pathname.split('/');
-            setTestId(allUrl[allUrl.length - 1]);
-            const [res, resErr] = await getQuestions(testId);
+  useEffect(() => {
+    const fetch = async () => {
+      const allUrl = pathname.split('/');
+      setTestId(allUrl[allUrl.length - 1]);
+      const [res, resErr] = await getQuestions(testId);
 
-            if (!resErr) {
-                setQuestions(res);
-            }
-        };
+      if (!resErr) {
+        setQuestions(res);
+      }
+    };
 
-        fetch();
-    }, [testId]);
+    fetch();
+  }, [testId, pathname]);
 
-    return (
-        <div>
-            {questions.length > 0 ? (
-                questions.map((question) => (
-                    <div
-                        style={{
-                            border: '0.5px solid black',
-                            padding: '10px 5px',
-                        }}
-                    >
-                        <p>{question.enunciated}</p>
-                        <br />
-                        <p>a: {question.options_a}</p>
-                        <p>b: {question.options_b}</p>
-                    </div>
-                ))
-            ) : (
-                <div style={{ width: 400, height: 400 }}>
-                    <p>Nenhuma questão foi criada ainda!</p>
-                </div>
-            )}
+  return (
+    <div>
+      {questions.length > 0 ? (
+        questions.map((question) => (
+          <div
+            style={{
+              border: '0.5px solid black',
+              padding: '10px 5px',
+            }}
+          >
+            <p>{question.enunciated}</p>
+            <br />
+            <p>a: {question.options_a}</p>
+            <p>b: {question.options_b}</p>
+          </div>
+        ))
+      ) : (
+        <div style={{ width: 400, height: 400 }}>
+          <p>Nenhuma questão foi criada ainda!</p>
         </div>
-    );
+      )}
+    </div>
+  );
 }

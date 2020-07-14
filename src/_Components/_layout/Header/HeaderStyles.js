@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { AppColor, GradientDefault } from '~/styles/global';
+import { GradientDefault } from '~/styles/global';
 
 import { IoIosArrowDown } from 'react-icons/io';
 
