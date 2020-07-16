@@ -9,6 +9,9 @@ import { Form } from '@unform/web';
 import { createTest } from '../../../utils/Services/TestsServices/TestsService';
 import { createQuestions } from '../../../utils/Services/QuestionServices/QuestionServices';
 
+// Helpers
+import { formatQuestionsBody } from '~/utils/helpers/QuestionHelper';
+
 // Components
 import Input from '../../../_Components/UnformInput/UnformInput';
 
@@ -16,38 +19,38 @@ import Input from '../../../_Components/UnformInput/UnformInput';
 import { Container, Label, Button, CloseButtonContainer } from './DrawerStyles';
 
 export default function Drawer({ handleClose, open, subjectId: subject_id }) {
+  const [quizName, setQuizName] = useState(null);
   const [questions, addQuestion] = useState([
     {
       enunciated: '',
-      options_number: '4',
-      options_a: null,
-      options_b: null,
-      options_c: null,
-      options_d: null,
-      options_e: null,
-      correct_option: 'options_a',
+      options: [],
+      options_number: '2',
+      correct_option_id: '0',
     },
   ]);
 
-  const handleSubmit = async ({ name }) => {
+  const handleSubmit = async () => {
+    // TODO: Create a topic manager (maybe tags);
     const topic_id = 1;
     const questions_quantity = questions.length;
     const [res, resErr] = await createTest(
-      name,
+      quizName,
       questions_quantity,
       subject_id
     );
 
     if (!resErr) {
-      const [, questionErr] = await createQuestions(
+      const [questionRes, questionErr] = await createQuestions(
         res.id,
         topic_id,
         questions
       );
+
       if (!questionErr) {
         alert('Teste criado com sucesso!');
         handleClose();
       }
+      console.log('err', questionErr.response);
     }
   };
 
@@ -55,12 +58,8 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
     let values = [...questions];
     values.push({
       enunciated: '',
-      options_a: null,
-      options_b: null,
-      options_c: null,
-      options_d: null,
-      options_e: null,
-      correct_option: 'options_a',
+      options: [],
+      correct_option_id: 0,
     });
     addQuestion(values);
   };
@@ -75,27 +74,32 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
    *
    * @param {Event} event
    */
-  const handleChange = (index, event) => {
+  const handleChange = (event, index = 0) => {
     const values = [...questions];
-    if (event.target.name === 'enunciated') {
-      values[index].enunciated = event.target.value;
-    } else if (event.target.name === 'options_a') {
-      values[index].options_a = event.target.value;
-    } else if (event.target.name === 'options_b') {
-      values[index].options_b = event.target.value;
-    } else if (event.target.name === 'options_c') {
-      values[index].options_c = event.target.value;
-    } else if (event.target.name === 'options_d') {
-      values[index].options_d = event.target.value;
-    } else if (event.target.name === 'options_e') {
-      values[index].options_e = event.target.value;
+
+    const { name, value, id } = event.target;
+
+    if (name === 'quiz_name') {
+      setQuizName(value);
     }
+    if (name === 'enunciated') {
+      values[index].enunciated = value;
+    }
+    if (name === 'options') {
+      values[index].options[id] = value;
+      values[index].options_number = values[index].options.length.toString();
+    }
+
     addQuestion(values);
   };
 
-  const handleSelectChange = (index, e) => {
+  /**
+   * @param {Event} event
+   * @param {Number} index
+   */
+  const handleSelectChange = (event, index) => {
     let values = [...questions];
-    values[index].correct_option = e.target.value;
+    values[index].correct_option_id = event.target.value.toString();
     addQuestion(values);
   };
 
@@ -107,10 +111,16 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
       <Form id="createTest" onSubmit={handleSubmit}>
         <Container>
           <h1>Criar Teste</h1>
-          <Label>Nome:</Label>
-          <Input name="name" type="text" placeholder="Nome do teste" />
+          <Label>Nome do teste:</Label>
+          <Input
+            name="quiz_name"
+            type="text"
+            placeholder="Nome do teste"
+            onChange={(event) => handleChange(event)}
+          />
+
           <p onClick={handleAddQuestion}>Adicionar questão</p>
-          <br />
+
           {questions &&
             questions.map((question, index) => (
               <div
@@ -129,55 +139,54 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
                   name="enunciated"
                   type="text"
                   placeholder="Enunciado da pergunta"
-                  onChange={(event) => handleChange(index, event)}
+                  onChange={(event) => handleChange(event, index)}
                 />
                 <Label>Opção A:*</Label>
                 <Input
-                  name="options_a"
+                  id="0"
+                  name="options"
                   type="text"
                   placeholder="Obrigatório"
-                  onChange={(event) => handleChange(index, event)}
+                  onChange={(event) => handleChange(event, index)}
                 />
                 <Label>Opção B:*</Label>
                 <Input
-                  name="options_b"
+                  id="1"
+                  name="options"
                   type="text"
                   placeholder="Obrigatório"
-                  onChange={(event) => handleChange(index, event)}
+                  onChange={(event) => handleChange(event, index)}
                 />
                 <Label>Opção C:</Label>
                 <Input
-                  name="options_c"
+                  id="2"
+                  name="options"
                   type="text"
                   placeholder="Opcional"
-                  onChange={(event) => handleChange(index, event)}
+                  onChange={(event) => handleChange(event, index)}
                 />
                 <Label>Opção D:</Label>
                 <Input
-                  name="options_d"
+                  id="3"
+                  name="options"
                   type="text"
                   placeholder="Opcional"
-                  onChange={(event) => handleChange(index, event)}
+                  onChange={(event) => handleChange(event, index)}
                 />
                 <Label>Opção E:</Label>
                 <Input
-                  name="options_e"
+                  id="4"
+                  name="options"
                   type="text"
                   placeholder="Opcional"
-                  onChange={(event) => handleChange(index, event)}
+                  onChange={(event) => handleChange(event, index)}
                 />
                 <br />
-                <Label>Opção correta</Label>
-                <select
-                  onChange={(event) => handleSelectChange(index, event)}
-                  form="createTest"
-                  name="correct_option"
-                >
-                  <option value="options_a">Opção A</option>
-                  <option value="options_b">Opção B</option>
-                  <option value="options_c">Opção C</option>
-                  <option value="options_d">Opção D</option>
-                  <option value="options_e">Opção E</option>
+                <Label>Opção correta:</Label>
+                <select onChange={(event) => handleSelectChange(event, index)}>
+                  {question.options.map((opt, index) => (
+                    <option value={index}>{`${index + 1} - ${opt}`}</option>
+                  ))}
                 </select>
               </div>
             ))}

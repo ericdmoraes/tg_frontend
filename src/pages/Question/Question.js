@@ -12,7 +12,6 @@ export default function Question({
   location: { pathname },
 }) {
   const [testId, setTestId] = useState(null);
-
   const [questions, setQuestions] = useState(false);
 
   useEffect(() => {
@@ -41,8 +40,18 @@ export default function Question({
           >
             <p>{question.enunciated}</p>
             <br />
-            <p>a: {question.options_a}</p>
-            <p>b: {question.options_b}</p>
+            {question.options.map((option, index) => (
+              <>
+                <p>
+                  {index + 1}) {option}
+                </p>
+              </>
+            ))}
+            <br />
+            <p>
+              Opção correta:{' '}
+              {question.options[parseInt(question.correct_option_id)]}
+            </p>
           </div>
         ))
       ) : (
