@@ -66,3 +66,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+docker run --name postgres-database --network=postgres-network -e "POSTGRES_PASSWORD=docker" -p 5432:5432 -v /home/eric/projects/postgres:/var/lib/postgresql/data -d postgres
+
+docker run --name pgadmin --network=postgres-network -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=eric@mail.com" -e "PGADMIN_DEFAULT_PASSWORD=docker" -d dpage/pgadmin4
