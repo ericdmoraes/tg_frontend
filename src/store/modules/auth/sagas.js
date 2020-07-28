@@ -20,7 +20,7 @@ export function* signIn({ payload }) {
     yield put(signInSuccess(token, user));
     navigateTo('/');
   } else if (resErr) {
-    yield put(signFailure(true));
+    yield put(signFailure(resErr));
   }
 }
 

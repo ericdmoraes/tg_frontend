@@ -42,16 +42,8 @@ export default function LoginForm() {
 
   const { error } = useSelector((state) => state.auth);
 
-  const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //     setSnack(true);
-  // }, [error]);
-
   const handleSubmit = async ({ email, password }) => {
-    setLoading(true);
     dispatch(signInRequest(email, password));
-    setLoading(false);
   };
 
   const handleClick = () => {
@@ -68,33 +60,29 @@ export default function LoginForm() {
         <HeaderContainer>
           <Title>Entrar</Title>
         </HeaderContainer>
+
         <FieldsContainer>
           <Label>E-mail:</Label>
           <Input name="email" type="email" placeholder="exemplo@exemplo.com" />
           <Label>Senha:</Label>
           <Input name="password" type="password" placeholder="Sua senha" />
         </FieldsContainer>
+
         <ButtonContainer>
           <Button type="submit">
-            {loading ? (
-              'Carregando'
-            ) : (
-              <>
-                <Icon px={16} /> Entrar
-              </>
-            )}
+            <Icon px={16} /> Entrar
           </Button>
         </ButtonContainer>
+
         <UtilsContainer>
           <LabelForgotPassword>Esqueci minha senha*</LabelForgotPassword>
-          <LabelSignup onClick={() => handleClick()}>
-            Quero me cadastrar
-          </LabelSignup>
+          <LabelSignup onClick={handleClick}>Quero me cadastrar</LabelSignup>
         </UtilsContainer>
       </Form>
+
       <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error">
-          Mistakes were made!
+          {error}
         </Alert>
       </Snackbar>
     </Container>

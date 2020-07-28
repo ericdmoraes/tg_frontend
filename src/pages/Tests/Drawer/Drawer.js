@@ -40,7 +40,7 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
     );
 
     if (!resErr) {
-      const [questionRes, questionErr] = await createQuestions(
+      const [, questionErr] = await createQuestions(
         res.id,
         topic_id,
         questions
