@@ -10,7 +10,8 @@ import Alert from '../../../_Components/Alert/Alert';
 // Styles
 import * as S from './SignUpFormStyles';
 
-// Services
+// utils
+import BuildDatabaseErrorMessage from '~/utils/helpers/DatabaseErrors';
 import navigateTo from '../../../utils/Services/NavigationServices/navigate';
 import { makeRegister } from '../../../utils/Services/SignUpServices/SignUpServices';
 
@@ -41,7 +42,7 @@ export default function SignUpForm() {
     if (!err) {
       return setCreated(true);
     }
-    setErrorMsg(err.data);
+    setErrorMsg(BuildDatabaseErrorMessage(err.original.code));
     setSnack(true);
   };
 
@@ -84,7 +85,7 @@ export default function SignUpForm() {
         ) : (
           <S.Label>
             Por favor, verifique sua caixa de emails, sua senha foi enviada pra
-            lá! :)
+            lá.
           </S.Label>
         )}
         <S.UtilsContainer>
@@ -93,13 +94,6 @@ export default function SignUpForm() {
           </S.LabelForgotPassword>
         </S.UtilsContainer>
       </Form>
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        }}
-      />
       <Snackbar open={snack} autoHideDuration={6000} onClose={handleSnack}>
         <Alert onClose={handleSnack} severity="error">
           {errorMsg}

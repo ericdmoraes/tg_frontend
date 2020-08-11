@@ -42,23 +42,6 @@ function SearchSubjectsContainer() {
         <Input name="subject_id" type="number" placeholder="Id da disciplina" />
         <S.Button type="submit">Pesquisar</S.Button>
       </S.SearchContainer>
-      {/* {loading && (
-        <LoadingComponent>
-          <p>Carregando...</p>
-        </LoadingComponent>
-      )} */}
-      {/* {!loading &&
-        data &&
-        data.map((d) => (
-          <S.CardContainer>
-            <Card data={d} fields={fields} />
-          </S.CardContainer>
-        ))} */}
-      {/* {!loading && !data.length > 0 && (
-        <LoadingComponent>
-          <p>Nenhuma disciplina encontrada</p>
-        </LoadingComponent>
-      )} */}
     </div>
   );
 }
