@@ -18,7 +18,7 @@ export default function Student() {
       </S.ListHeader>
       <S.Container>
         <SearchSubject />
-        {/* <SubscribedContainer /> */}
+        <SubscribedContainer />
       </S.Container>
     </>
   );

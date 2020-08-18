@@ -16,7 +16,7 @@ import { createQuestions } from '../../../utils/Services/QuestionServices/Questi
 import Input from '../../../_Components/UnformInput/UnformInput';
 
 // Styles
-import { Container, Label, Button, CloseButtonContainer } from './DrawerStyles';
+import * as S from './DrawerStyles';
 
 export default function Drawer({ handleClose, open, subjectId: subject_id }) {
   const [quizName, setQuizName] = useState(null);
@@ -50,7 +50,7 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
         alert('Teste criado com sucesso!');
         handleClose();
       }
-      console.log('err', questionErr.response);
+      // console.log('err', questionErr.response);
     }
   };
 
@@ -65,8 +65,13 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
   };
 
   const handleRemoveQuestion = (index) => {
+    console.log('id para remover', index);
+
     const values = [...questions];
+    console.log('todas questoes', ...questions);
+    console.log('irá remover', questions[index]);
     values.splice(index, 1);
+    console.log('depois de remover', values);
     addQuestion(values);
   };
 
@@ -105,13 +110,13 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
 
   return (
     <DrawerMenu anchor="bottom" open={open} onClose={handleClose}>
-      <CloseButtonContainer onClick={handleClose}>
+      <S.CloseButtonContainer onClick={handleClose}>
         <IoMdClose style={{ fontSize: 25, cursor: 'pointer' }} />
-      </CloseButtonContainer>
+      </S.CloseButtonContainer>
       <Form id="createTest" onSubmit={handleSubmit}>
-        <Container>
+        <S.Container>
           <h1>Criar Teste</h1>
-          <Label>Nome do teste:</Label>
+          <S.Label>Nome do teste:</S.Label>
           <Input
             name="quiz_name"
             type="text"
@@ -119,29 +124,22 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
             onChange={(event) => handleChange(event)}
           />
 
-          <p onClick={handleAddQuestion}>Adicionar questão</p>
+          <S.AddQuestionContainer>
+            <p onClick={handleAddQuestion}>Adicionar questão</p>
+          </S.AddQuestionContainer>
 
           {questions &&
             questions.map((question, index) => (
-              <div
-                style={{
-                  border: '1px solid black',
-                  margin: '10px 0',
-                  padding: 10,
-                }}
-              >
-                <p onClick={() => handleRemoveQuestion(index)}>
-                  Remover questão
-                </p>
-                <br />
-                <Label>Enunciado:* </Label>
+              <S.QuestionContainer>
+                <S.Label>Enunciado:* </S.Label>
                 <Input
                   name="enunciated"
                   type="text"
+                  defaultValue={question[index]}
                   placeholder="Enunciado da pergunta"
                   onChange={(event) => handleChange(event, index)}
                 />
-                <Label>Opção A:*</Label>
+                <S.Label>Opção A:*</S.Label>
                 <Input
                   id="0"
                   name="options"
@@ -149,7 +147,7 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
                   placeholder="Obrigatório"
                   onChange={(event) => handleChange(event, index)}
                 />
-                <Label>Opção B:*</Label>
+                <S.Label>Opção B:*</S.Label>
                 <Input
                   id="1"
                   name="options"
@@ -157,7 +155,7 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
                   placeholder="Obrigatório"
                   onChange={(event) => handleChange(event, index)}
                 />
-                <Label>Opção C:</Label>
+                <S.Label>Opção C:</S.Label>
                 <Input
                   id="2"
                   name="options"
@@ -165,7 +163,7 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
                   placeholder="Opcional"
                   onChange={(event) => handleChange(event, index)}
                 />
-                <Label>Opção D:</Label>
+                <S.Label>Opção D:</S.Label>
                 <Input
                   id="3"
                   name="options"
@@ -173,7 +171,7 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
                   placeholder="Opcional"
                   onChange={(event) => handleChange(event, index)}
                 />
-                <Label>Opção E:</Label>
+                <S.Label>Opção E:</S.Label>
                 <Input
                   id="4"
                   name="options"
@@ -182,17 +180,28 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
                   onChange={(event) => handleChange(event, index)}
                 />
                 <br />
-                <Label>Opção correta:</Label>
-                <select onChange={(event) => handleSelectChange(event, index)}>
-                  {question.options.map((opt, index) => (
-                    <option value={index}>{`${index + 1} - ${opt}`}</option>
-                  ))}
-                </select>
-              </div>
+                <S.FooterQuestionContainer>
+                  <div>
+                    <S.Label>Opção correta:</S.Label>
+                    <S.Select
+                      onChange={(event) => handleSelectChange(event, index)}
+                    >
+                      {question.options.map((opt, index) => (
+                        <option value={index}>{`${index + 1} - ${opt}`}</option>
+                      ))}
+                    </S.Select>
+                  </div>
+                  <S.RemoveQuestionContainer>
+                    <p onClick={() => handleRemoveQuestion(index)}>
+                      Remover questão
+                    </p>
+                  </S.RemoveQuestionContainer>
+                </S.FooterQuestionContainer>
+              </S.QuestionContainer>
             ))}
 
-          <Button type="submit">Criar teste</Button>
-        </Container>
+          <S.Button type="submit">Criar teste</S.Button>
+        </S.Container>
       </Form>
     </DrawerMenu>
   );

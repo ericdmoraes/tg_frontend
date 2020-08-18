@@ -19,7 +19,11 @@ function SearchSubjectsContainer() {
     const [res, err] = await getSubjectById(subject_id);
 
     if (!err) {
-      setData(res);
+      if (res.length > 0) {
+        setData(res);
+      } else {
+        setData(null);
+      }
       setLoading(false);
     }
   };
@@ -41,6 +45,7 @@ function SearchSubjectsContainer() {
         <p>Digite o id da disciplina que deseja se inscrever:</p>
         <Input name="subject_id" type="number" placeholder="Id da disciplina" />
         <S.Button type="submit">Pesquisar</S.Button>
+        {!loading && data !== null && <Card data={data[0]} fields={fields} />}
       </S.SearchContainer>
     </div>
   );

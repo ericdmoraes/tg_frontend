@@ -70,7 +70,7 @@ export default function LoginForm() {
 
         <ButtonContainer>
           <Button type="submit">
-            <Icon px={16} /> Entrar
+            <Icon px={20} /> <p>Entrar</p>
           </Button>
         </ButtonContainer>
 

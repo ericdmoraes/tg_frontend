@@ -2,6 +2,15 @@ import { createGlobalStyle } from 'styled-components';
 
 export const AppColor = 'rgba(24,42,92,1)';
 
+export const Positive = '#00aa00';
+export const PositiveDarker = '#007700';
+
+export const Negative = '#aa0000';
+export const NegativeDarker = '#770000';
+
+export const Button = '#ffee00';
+export const ButtonHover = '#ff9900';
+
 export const GradientDefault = `
 background: rgb(0,0,0);
 background: -moz-linear-gradient(120deg, rgba(0,0,0,1) 0%, rgba(24,42,92,1) 69%, rgba(24,34,88,1) 100%);
