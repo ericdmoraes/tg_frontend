@@ -8,8 +8,8 @@ export const PositiveDarker = '#007700';
 export const Negative = '#aa0000';
 export const NegativeDarker = '#770000';
 
-export const Button = '#ffee00';
-export const ButtonHover = '#ff9900';
+export const Button = '#f4721b';
+export const ButtonHover = '#f4a000';
 
 export const GradientDefault = `
 background: rgb(0,0,0);

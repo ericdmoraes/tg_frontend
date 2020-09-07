@@ -15,6 +15,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   @media (max-width: 767px) {
     width: 100%;
@@ -97,8 +98,10 @@ export const Button = styled.button`
 
 export const UtilsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  /* justify-content: space-between;
+  align-items: flex-end; */
+  justify-content: center;
+  align-items: center;
   flex-direction: row-reverse;
   width: 100%;
   margin-top: 30px;
@@ -116,7 +119,8 @@ export const LabelForgotPassword = styled.p`
 
 export const LabelSignup = styled.p`
   font-weight: 500;
-  width: 45%;
+  text-align: center;
+  width: 100%;
   color: white;
   text-decoration: underline;
   cursor: pointer;

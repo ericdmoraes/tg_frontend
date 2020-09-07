@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+// Redux
+import { useSelector } from 'react-redux';
+
 // styles
 import * as S from './SearchContainerStyles';
 
@@ -9,18 +12,22 @@ import Card from '~/_Components/Cards/DefaultCard/DefaultCard';
 
 // utils
 import { getSubjectById } from '~/utils/Services/SubjectsServices/SubjectsService';
+import { subscribeToSubject } from '~/utils/Services/SubscriptionServices/SubscriptionService';
 
 function SearchSubjectsContainer() {
+  const { profile } = useSelector((state) => state.user);
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async ({ subject_id }) => {
     setLoading(true);
     const [res, err] = await getSubjectById(subject_id);
+    console.log(res, err);
 
     if (!err) {
       if (res.length > 0) {
-        setData(res);
+        setData(res[0]);
       } else {
         setData(null);
       }
@@ -35,8 +42,14 @@ function SearchSubjectsContainer() {
     goToLabel: 'Inscrever-se',
   };
 
-  const LoadingComponent = ({ children }) => {
-    return <S.Container>{children}</S.Container>;
+  const handleClick = async () => {
+    const [res, errRes] = await subscribeToSubject(profile.id, data.id);
+
+    if (!errRes) {
+      console.log('inscreveu', res);
+    }
+
+    console.log(errRes.response);
   };
 
   return (
@@ -45,7 +58,9 @@ function SearchSubjectsContainer() {
         <p>Digite o id da disciplina que deseja se inscrever:</p>
         <Input name="subject_id" type="number" placeholder="Id da disciplina" />
         <S.Button type="submit">Pesquisar</S.Button>
-        {!loading && data !== null && <Card data={data[0]} fields={fields} />}
+        {!loading && data !== null && (
+          <Card data={data} fields={fields} handler={handleClick} />
+        )}
       </S.SearchContainer>
     </div>
   );

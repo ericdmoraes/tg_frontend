@@ -37,6 +37,9 @@ import {
   LabelSignup,
 } from './LoginFormStyles';
 
+// Assets
+const logo = require('~/assets/logo.png');
+
 export default function LoginForm() {
   const dispatch = useDispatch();
 
@@ -56,6 +59,7 @@ export default function LoginForm() {
 
   return (
     <Container>
+      <img src={logo} />
       <Form onSubmit={handleSubmit}>
         <HeaderContainer>
           <Title>Entrar</Title>
@@ -75,8 +79,8 @@ export default function LoginForm() {
         </ButtonContainer>
 
         <UtilsContainer>
-          <LabelForgotPassword>Esqueci minha senha*</LabelForgotPassword>
-          <LabelSignup onClick={handleClick}>Quero me cadastrar</LabelSignup>
+          {/* <LabelForgotPassword></LabelForgotPassword> */}
+          <LabelSignup onClick={handleClick}>Quero me cadastrar!</LabelSignup>
         </UtilsContainer>
       </Form>
 

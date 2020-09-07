@@ -12,12 +12,12 @@ import {
 
 import { FaCogs } from 'react-icons/fa';
 
-import navigateTo from '~/utils/Services/NavigationServices/navigate';
+// import navigateTo from '~/utils/Services/NavigationServices/navigate';
 
-export default function DefaultCard({ data, fields }) {
-  const handleClick = (id) => {
-    navigateTo(`/${fields.goTo}/${id}`, data);
-  };
+export default function DefaultCard({ data, fields, handler }) {
+  // const handleClick = (id) => {
+  //   navigateTo(`/${fields.goTo}/${id}`, data);
+  // };
 
   const day = new Date(data.createdAt).getDate();
   const month = new Date(data.createdAt).getMonth();
@@ -46,8 +46,8 @@ export default function DefaultCard({ data, fields }) {
           <DescriptionLabel>{data.description}</DescriptionLabel>
         </DescriptionContainer>
       </Content>
-      <GoToTest onClick={() => handleClick(data.id)}>
-        <CTALabel color="white">Ver {fields.goToLabel}</CTALabel>
+      <GoToTest onClick={handler}>
+        <CTALabel color="white">{fields.goToLabel}</CTALabel>
         <small style={{ color: 'white', marginLeft: 10 }}>
           <div
             style={{

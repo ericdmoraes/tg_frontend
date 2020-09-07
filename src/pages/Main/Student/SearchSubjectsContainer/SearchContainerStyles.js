@@ -22,16 +22,12 @@ export const SearchContainer = styled(Form)`
   display: flex;
   flex-direction: column;
 
-  > p {
-    font-weight: bold;
-  }
-
   > input {
     border-radius: 5px;
     height: 35px;
     padding: 10px;
     width: 35%;
-    margin-bottom: 20px;
+    margin-top: 5px;
     border: 1px solid #bbbbbb;
 
     @media (max-width: 767px) {

@@ -2,19 +2,43 @@ import styled from 'styled-components';
 
 import { MdAssignment } from 'react-icons/md';
 import UnformInput from '../../../_Components/UnformInput/UnformInput';
+import { Button as ButtonColor, ButtonHover } from '~/styles/global';
+
+// export const Container = styled.div`
+//   min-width: 35%;
+//   background-color: rgba(30, 30, 30, 0.8);
+//   border-radius: 5px;
+//   padding: 20px;
+
+//   @media (max-width: 767px) {
+//     width: 100%;
+//     height: 100%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+// `;
 
 export const Container = styled.div`
-  min-width: 35%;
-  background-color: rgba(30, 30, 30, 0.8);
+  min-width: 40%;
+  height: 100%;
+  background-color: rgb(10, 10, 10);
   border-radius: 5px;
   padding: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   @media (max-width: 767px) {
     width: 100%;
     height: 100%;
+    background-color: rgba(10, 10, 10, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 0px;
   }
 `;
 
@@ -27,7 +51,7 @@ export const HeaderContainer = styled.div`
 
 export const Icon = styled(MdAssignment)`
   font-size: ${({ px }) => px}px;
-  color: white;
+  color: black;
   margin-right: 10px;
 `;
 
@@ -71,14 +95,18 @@ export const Button = styled.button`
   height: 100%;
   border-radius: 5px;
   border: 0px solid black;
-  background-color: black;
-  color: white;
+  background-color: ${ButtonColor};
+  color: black;
   align-items: center;
   justify-content: center;
   display: flex;
 
+  p {
+    font-weight: bold;
+  }
+
   &:hover {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: ${ButtonHover};
   }
 `;
 

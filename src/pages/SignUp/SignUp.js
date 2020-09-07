@@ -6,13 +6,16 @@ import { BackgroundImage, Container } from './SignUpStyles';
 // Components
 import SignUpForm from './SignUpForm/SignUpForm';
 
+// Assets
+const logo = require('~/assets/bg.jpg');
+
 export default function Login() {
   return (
     <>
       <Container>
         <SignUpForm />
       </Container>
-      <BackgroundImage src="https://picsum.photos/1920/1080/?blur=3&grayscale" />
+      <BackgroundImage src={logo} />
     </>
   );
 }

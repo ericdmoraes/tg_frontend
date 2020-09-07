@@ -15,6 +15,9 @@ import BuildDatabaseErrorMessage from '~/utils/helpers/DatabaseErrors';
 import navigateTo from '../../../utils/Services/NavigationServices/navigate';
 import { makeRegister } from '../../../utils/Services/SignUpServices/SignUpServices';
 
+// Assets
+const logo = require('~/assets/register.png');
+
 export default function SignUpForm() {
   const [check, setCheck] = useState(false);
   const [snack, setSnack] = useState(false);
@@ -52,6 +55,7 @@ export default function SignUpForm() {
 
   return (
     <S.Container>
+      <img src={logo} />
       <Form onSubmit={handleSubmit}>
         {!created ? (
           <>
@@ -78,7 +82,7 @@ export default function SignUpForm() {
             </S.FieldsContainer>
             <S.ButtonContainer>
               <S.Button type="submit">
-                <S.Icon px={16} /> Criar conta
+                <S.Icon px={16} /> <p>Criar conta</p>
               </S.Button>
             </S.ButtonContainer>
           </>
