@@ -5,6 +5,7 @@ export const getQuestions = async (id) => {
     const { data } = await axios.post(`${routes.questions}/list`, {
       test_id: id,
     });
+    console.log('data', data);
 
     return [data, false];
   } catch (error) {

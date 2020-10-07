@@ -71,6 +71,14 @@ export const Label = styled.p`
   margin-bottom: 3px;
 `;
 
+export const LabelContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  padding: 0px 40px;
+`;
+
 export const Input = styled(UnformInput)`
   border-radius: 5px;
   height: 30px;

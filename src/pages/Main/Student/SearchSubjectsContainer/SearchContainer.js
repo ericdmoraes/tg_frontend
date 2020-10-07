@@ -23,7 +23,6 @@ function SearchSubjectsContainer() {
   const handleSubmit = async ({ subject_id }) => {
     setLoading(true);
     const [res, err] = await getSubjectById(subject_id);
-    console.log(res, err);
 
     if (!err) {
       if (res.length > 0) {
@@ -46,10 +45,11 @@ function SearchSubjectsContainer() {
     const [res, errRes] = await subscribeToSubject(profile.id, data.id);
 
     if (!errRes) {
-      console.log('inscreveu', res);
+      alert('Você se inscreveu com sucesso!');
+      return 0;
     }
 
-    console.log(errRes.response);
+    alert('Erro ao se inscrever, por favor tente mais tarde!');
   };
 
   return (

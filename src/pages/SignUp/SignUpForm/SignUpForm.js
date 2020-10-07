@@ -87,10 +87,12 @@ export default function SignUpForm() {
             </S.ButtonContainer>
           </>
         ) : (
-          <S.Label>
-            Por favor, verifique sua caixa de emails, sua senha foi enviada pra
-            lá.
-          </S.Label>
+          <S.LabelContainer>
+            <S.Label>
+              Por favor, verifique sua caixa de emails, sua senha foi enviada
+              pra lá.
+            </S.Label>
+          </S.LabelContainer>
         )}
         <S.UtilsContainer>
           <S.LabelForgotPassword onClick={() => handleClick()}>
