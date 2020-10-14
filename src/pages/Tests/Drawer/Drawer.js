@@ -65,13 +65,13 @@ export default function Drawer({ handleClose, open, subjectId: subject_id }) {
   };
 
   const handleRemoveQuestion = (index) => {
-    console.log('id para remover', index);
+    // console.log('id para remover', index);
 
     const values = [...questions];
-    console.log('todas questoes', ...questions);
-    console.log('irá remover', questions[index]);
+    // console.log('todas questoes', ...questions);
+    // console.log('irá remover', questions[index]);
     values.splice(index, 1);
-    console.log('depois de remover', values);
+    // console.log('depois de remover', values);
     addQuestion(values);
   };
 

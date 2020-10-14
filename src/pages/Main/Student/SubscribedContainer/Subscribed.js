@@ -30,7 +30,7 @@ function SubscribedContainer() {
     <S.SubscribedContainer>
       Disciplinas que você está cadastrado:
       <p>carregando...</p>
-      {data.length > 0 && console.log(data)}
+      {/* {data.length > 0 && console.log(data)} */}
       {/* {!loading && data.map((d) => console.log(d))} */}
     </S.SubscribedContainer>
   );

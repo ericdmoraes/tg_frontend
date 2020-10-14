@@ -5,7 +5,7 @@ export const makeRegister = async (userData) => {
     const res = await axios.post(`${routes.register}`, userData);
     return [res, false];
   } catch ({ response: { data } }) {
-    console.log('oi', data);
+    // console.log('oi', data);
     return [false, data];
   }
 };

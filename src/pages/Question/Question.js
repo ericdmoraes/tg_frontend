@@ -29,7 +29,9 @@ export default function Question({
   }, [testId, pathname]);
 
   return (
+    
     <div>
+      {console.log('hi =>', questions)}
       {questions.length > 0 ? (
         questions.map((question) => (
           <div
@@ -40,6 +42,7 @@ export default function Question({
           >
             <p>{question.enunciated}</p>
             <br />
+
             {question.options.map((option, index) => (
               <>
                 <p>
@@ -47,6 +50,7 @@ export default function Question({
                 </p>
               </>
             ))}
+
             <br />
             <p>
               Opção correta:{' '}
